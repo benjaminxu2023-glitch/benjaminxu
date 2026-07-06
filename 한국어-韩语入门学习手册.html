@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FBF7EF">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="韩语入门">
+<meta name="description" content="韩语入门学习手册：40 个한글字母 + 233 个初级词汇，中韩双语、可发音、可卡片练习。">
+<title>한국어 · 韩语入门学习手册</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBF7EF; --paper-2:#F3EDDF; --ink:#22242A; --ink-soft:#5C5A52; --ink-faint:#948F81;
+  --line:#E3DCCA; --red:#C8102E; --blue:#1D4E9E; --blue-soft:#EAF0FA; --red-soft:#FAECEE;
+  --card:#FFFFFF; --shadow:0 1px 2px rgba(60,50,30,.06),0 6px 18px rgba(60,50,30,.07);
+  --radius:14px;
+}
+[data-theme="dark"]{
+  --paper:#16181D; --paper-2:#1D2026; --ink:#EDE8DC; --ink-soft:#B4AFA1; --ink-faint:#7C776B;
+  --line:#2C2F37; --red:#E8455F; --blue:#6E9BE8; --blue-soft:#1D2736; --red-soft:#332024;
+  --card:#1E2127; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 20px rgba(0,0,0,.35);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  line-height:1.55; transition:background .3s,color .3s;
+}
+.ko{font-family:"Gowun Batang","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",serif}
+.rr{font-family:"IBM Plex Mono",ui-monospace,monospace; color:var(--blue); letter-spacing:.02em}
+body.hide-rr .rr{display:none}
+
+/* ---------- header ---------- */
+header{max-width:1060px;margin:0 auto;padding:52px 20px 8px;text-align:center;position:relative}
+.taegeuk{display:inline-block;width:14px;height:14px;border-radius:50%;vertical-align:middle;
+  background:linear-gradient(180deg,var(--red) 50%,var(--blue) 50%);margin:0 10px 6px}
+h1.title{font-size:clamp(40px,7vw,66px);line-height:1.1;font-weight:700}
+h1 .ko{letter-spacing:.01em}
+.subtitle{margin-top:10px;color:var(--ink-soft);font-size:15px}
+.subtitle b{color:var(--red);font-weight:600}
+.tagline{margin-top:4px;color:var(--ink-faint);font-size:12.5px;font-style:italic}
+
+/* ---------- toolbar ---------- */
+.toolbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+  padding:10px 16px;transition:background .3s}
+.toolbar-inner{max-width:1060px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.row1{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.search{flex:1;min-width:200px;position:relative}
+.search input{width:100%;padding:9px 14px 9px 38px;border:1.5px solid var(--line);border-radius:999px;
+  background:var(--card);color:var(--ink);font-size:15px;outline:none;transition:border-color .2s}
+.search input:focus{border-color:var(--blue)}
+.search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--ink-faint)}
+.btn{border:1.5px solid var(--line);background:var(--card);color:var(--ink-soft);border-radius:999px;
+  padding:8px 14px;font-size:13px;cursor:pointer;transition:all .15s;white-space:nowrap;font-family:inherit}
+.btn:hover{border-color:var(--ink-faint);color:var(--ink)}
+.btn.primary{background:var(--red);border-color:var(--red);color:#fff;font-weight:600}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.active-toggle{background:var(--blue-soft);border-color:var(--blue);color:var(--blue)}
+.pills{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.pill{border:1.5px solid var(--line);background:transparent;color:var(--ink-soft);border-radius:999px;
+  padding:6px 14px;font-size:13px;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:inherit}
+.pill .n{font-size:11px;color:var(--ink-faint);margin-left:4px}
+.pill:hover{border-color:var(--ink-faint)}
+.pill.active{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.pill.active .n{color:var(--paper);opacity:.7}
+
+/* ---------- sections / grid ---------- */
+main{max-width:1060px;margin:0 auto;padding:26px 20px 80px}
+.section{margin-bottom:38px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin:6px 2px 14px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.sec-head h2{font-size:21px;font-weight:700}
+.sec-head h2 .ko{color:var(--red);margin-right:8px}
+.sec-head .desc{color:var(--ink-faint);font-size:12.5px}
+.sec-head .count{margin-left:auto;font-size:11px;color:var(--ink-faint);letter-spacing:.12em;white-space:nowrap}
+.sub-head{font-size:13px;color:var(--ink-soft);margin:18px 2px 10px;font-weight:600}
+.sub-head::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;
+  background:linear-gradient(180deg,var(--red) 50%,var(--blue) 50%);margin-right:8px;vertical-align:1px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:10px}
+.grid.jamo{grid-template-columns:repeat(auto-fill,minmax(128px,1fr))}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 14px 12px;
+  box-shadow:var(--shadow);position:relative;transition:transform .15s,border-color .15s;cursor:default}
+.card:hover{transform:translateY(-2px);border-color:var(--ink-faint)}
+.card .w{font-size:24px;font-weight:700;line-height:1.25;word-break:keep-all}
+.card.jamo-card{text-align:center}
+.card.jamo-card .w{font-size:40px}
+.card.jamo-card .jname{font-size:12.5px;color:var(--ink-soft);margin-top:2px}
+.card .rr{font-size:12.5px;margin-top:3px}
+.card .zh{font-size:13.5px;color:var(--ink-soft);margin-top:5px}
+.speak{position:absolute;top:10px;right:10px;width:26px;height:26px;border:none;border-radius:50%;
+  background:var(--blue-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.speak svg{width:13px;height:13px;fill:var(--blue)}
+.speak:hover{background:var(--blue);}
+.speak:hover svg{fill:#fff}
+.speak.playing{background:var(--red)}
+.speak.playing svg{fill:#fff}
+.jamo-card .speak{position:static;margin:8px auto 0}
+.empty{padding:60px 0;text-align:center;color:var(--ink-faint);font-size:15px;display:none}
+
+/* ---------- practice overlay ---------- */
+.overlay{position:fixed;inset:0;z-index:100;background:color-mix(in srgb,var(--paper) 96%,transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:none;flex-direction:column;
+  align-items:center;justify-content:center;padding:20px}
+.overlay.open{display:flex}
+.ov-top{position:absolute;top:18px;left:0;right:0;display:flex;justify-content:space-between;align-items:center;
+  padding:0 22px;max-width:760px;margin:0 auto}
+.ov-cat{font-size:13px;color:var(--ink-soft)}
+.ov-close{border:none;background:transparent;font-size:26px;color:var(--ink-soft);cursor:pointer;line-height:1;padding:6px}
+.ov-close:hover{color:var(--ink)}
+.flash{width:min(520px,92vw);height:min(340px,52vh);perspective:1200px;cursor:pointer;outline:none}
+.flash-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.7,.3,1)}
+.flash.flipped .flash-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:26px;text-align:center}
+.face.back{transform:rotateY(180deg)}
+.face .big{font-size:clamp(44px,9vw,72px);font-weight:700;line-height:1.15;word-break:keep-all}
+.face .mid{font-size:clamp(24px,5vw,34px);color:var(--ink)}
+.face .rr{font-size:17px}
+.face .hint{position:absolute;bottom:14px;font-size:11.5px;color:var(--ink-faint)}
+.face .jn{font-size:16px;color:var(--ink-soft)}
+.ov-nav{display:flex;align-items:center;gap:18px;margin-top:26px}
+.ov-nav .btn{padding:9px 20px}
+.ov-count{font-size:13.5px;color:var(--ink-soft);min-width:76px;text-align:center;font-variant-numeric:tabular-nums}
+.ov-keys{margin-top:16px;font-size:12px;color:var(--ink-faint)}
+@media (max-width:600px){.ov-keys{display:none}}
+
+footer{border-top:1px solid var(--line);padding:26px 20px 40px;text-align:center;color:var(--ink-faint);font-size:12.5px}
+footer .taegeuk{width:10px;height:10px;margin:0 6px 3px}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto}}
+button:focus-visible,input:focus-visible,.flash:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1 class="title"><span class="ko">한국어</span><span class="taegeuk" aria-hidden="true"></span></h1>
+  <h1 class="title" style="font-size:clamp(22px,3.4vw,30px);margin-top:6px">韩语入门学习手册</h1>
+  <p class="subtitle"><b>40</b> 个한글字母 · <b>233</b> 个初级词汇 · 中韩双语 · 点击 <span style="color:var(--blue)">♪</span> 听发音</p>
+  <p class="tagline">Hangul &amp; core vocabulary for absolute beginners · 세종대왕 1443</p>
+</header>
+
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <div class="row1">
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="q" type="text" placeholder="搜索 韩文 / 罗马音 / 中文…" autocomplete="off">
+      </div>
+      <button class="btn active-toggle" id="rrBtn" title="显示/隐藏罗马音">罗马音</button>
+      <button class="btn" id="themeBtn" title="切换深浅色">深色</button>
+      <button class="btn primary" id="cardBtn">卡片练习</button>
+    </div>
+    <div class="pills" id="pills"></div>
+  </div>
+</div>
+
+<main>
+  <div id="sections"></div>
+  <div class="empty" id="empty">没找到匹配的词，换个词试试？</div>
+</main>
+
+<footer>
+  한글 by King Sejong · 1443<span class="taegeuk" aria-hidden="true"></span>为初学者精心整理 · 2026
+</footer>
+
+<!-- practice overlay -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="卡片练习">
+  <div class="ov-top">
+    <span class="ov-cat" id="ovCat"></span>
+    <button class="ov-close" id="ovClose" aria-label="退出练习">×</button>
+  </div>
+  <div class="flash" id="flash" tabindex="0" aria-label="翻转卡片">
+    <div class="flash-inner">
+      <div class="face front" id="faceFront"></div>
+      <div class="face back" id="faceBack"></div>
+    </div>
+  </div>
+  <div class="ov-nav">
+    <button class="btn" id="prevBtn">← 上一个</button>
+    <span class="ov-count" id="ovCount"></span>
+    <button class="btn" id="nextBtn">下一个 →</button>
+    <button class="btn" id="shufBtn" title="打乱顺序">🔀</button>
+  </div>
+  <p class="ov-keys">← → 方向键切换 · 空格翻转 · S 发音 · Esc 退出</p>
+</div>
+
+<script>
+/* ================= DATA ================= */
+/*DATA-START*/
+const CATS=[
+ {k:"all",  zh:"全部",        ko:"",       desc:""},
+ {k:"jamo", zh:"한글 字母",    ko:"한글",    desc:"辅音 · 元音 · 韩文字母表"},
+ {k:"greet",zh:"问候·常用语",  ko:"인사",    desc:"打招呼与生存句型"},
+ {k:"num",  zh:"数字",        ko:"숫자",    desc:"汉字数词与固有数词"},
+ {k:"ppl",  zh:"人·家庭",     ko:"사람",    desc:"称谓与家庭成员"},
+ {k:"time", zh:"时间·日期",   ko:"시간",    desc:"时刻、星期与年月日"},
+ {k:"food", zh:"饮食",        ko:"음식",    desc:"韩餐、食材与饮品"},
+ {k:"place",zh:"场所·交通",   ko:"장소",    desc:"地点与出行方式"},
+ {k:"thing",zh:"日常事物",    ko:"물건",    desc:"随身与身边的东西"},
+ {k:"verb", zh:"动词",        ko:"동사",    desc:"最常用的基本动作(原形)"},
+ {k:"adj",  zh:"形容词",      ko:"형용사",  desc:"描述性质与感受(原形)"}
+];
+const DATA=[
+/* ---- 한글: 基本辅音 14 ---- */
+{c:"ㄱ",n:"기역 giyeok",r:"g / k",z:"似“g”，词首偏轻",t:"기역",cat:"jamo",sub:"基本辅音 · 자음 14"},
+{c:"ㄴ",n:"니은 nieun",r:"n",z:"同“n”",t:"니은",cat:"jamo",sub:"基本辅音 · 자음 14"},
+{c:"ㄷ",n:"디귿 digeut",r:"d / t",z:"似“d”，词首偏轻",t:"디귿",cat:"jamo",sub:"基本辅音 · 자음 14"},
+{c:"ㄹ",n:"리을 rieul",r:"r / l",z:"弹舌r，收音时读l",t:"리을",cat:"jamo",sub:"基本辅音 · 자음 14"},
+{c:"ㅁ",n:"미음 mieum",r:"m",z:"同“m”",t:"미음",cat:"jamo",sub:"基本辅音 · 자음 14"},
+{c:"ㅂ",n:"비읍 bieup",r:"b / p",z:"似“b”，词首偏轻",t:"비읍",cat:"jamo",sub:"基本辅音 · 자음 14"},
+{c:"ㅅ",n:"시옷 siot",r:"s",z:"似“s”，遇ㅣ读“sh”",t:"시옷",cat:"jamo",sub:"基本辅音 · 자음 14"},
+{c:"ㅇ",n:"이응 ieung",r:"– / ng",z:"词首不发音，收音读ng",t:"이응",cat:"jamo",sub:"基本辅音 · 자음 14"},
+{c:"ㅈ",n:"지읒 jieut",r:"j",z:"似“j”，不送气",t:"지읒",cat:"jamo",sub:"基本辅音 · 자음 14"},
+{c:"ㅊ",n:"치읓 chieut",r:"ch",z:"送气的“ch”",t:"치읓",cat:"jamo",sub:"基本辅音 · 자음 14"},
+{c:"ㅋ",n:"키읔 kieuk",r:"k",z:"送气的“k”",t:"키읔",cat:"jamo",sub:"基本辅音 · 자음 14"},
+{c:"ㅌ",n:"티읕 tieut",r:"t",z:"送气的“t”",t:"티읕",cat:"jamo",sub:"基本辅音 · 자음 14"},
+{c:"ㅍ",n:"피읖 pieup",r:"p",z:"送气的“p”",t:"피읖",cat:"jamo",sub:"基本辅音 · 자음 14"},
+{c:"ㅎ",n:"히읗 hieut",r:"h",z:"同“h”",t:"히읗",cat:"jamo",sub:"基本辅音 · 자음 14"},
+/* ---- 한글: 紧音(双辅音) 5 ---- */
+{c:"ㄲ",n:"쌍기역 ssang-giyeok",r:"kk",z:"紧音，喉部紧绷的“g”",t:"쌍기역",cat:"jamo",sub:"紧音(双辅音) · 쌍자음 5"},
+{c:"ㄸ",n:"쌍디귿 ssang-digeut",r:"tt",z:"紧音的“d”",t:"쌍디귿",cat:"jamo",sub:"紧音(双辅音) · 쌍자음 5"},
+{c:"ㅃ",n:"쌍비읍 ssang-bieup",r:"pp",z:"紧音的“b”",t:"쌍비읍",cat:"jamo",sub:"紧音(双辅音) · 쌍자음 5"},
+{c:"ㅆ",n:"쌍시옷 ssang-siot",r:"ss",z:"紧音的“s”",t:"쌍시옷",cat:"jamo",sub:"紧音(双辅音) · 쌍자음 5"},
+{c:"ㅉ",n:"쌍지읒 ssang-jieut",r:"jj",z:"紧音的“j”",t:"쌍지읒",cat:"jamo",sub:"紧音(双辅音) · 쌍자음 5"},
+/* ---- 한글: 基本元音 10 ---- */
+{c:"ㅏ",n:"아 a",r:"a",z:"同“啊”",t:"아",cat:"jamo",sub:"基本元音 · 모음 10"},
+{c:"ㅑ",n:"야 ya",r:"ya",z:"同“呀”",t:"야",cat:"jamo",sub:"基本元音 · 모음 10"},
+{c:"ㅓ",n:"어 eo",r:"eo",z:"张嘴的“哦”，偏“喔”",t:"어",cat:"jamo",sub:"基本元音 · 모음 10"},
+{c:"ㅕ",n:"여 yeo",r:"yeo",z:"y 与 ㅓ 连读",t:"여",cat:"jamo",sub:"基本元音 · 모음 10"},
+{c:"ㅗ",n:"오 o",r:"o",z:"圆唇“欧”",t:"오",cat:"jamo",sub:"基本元音 · 모음 10"},
+{c:"ㅛ",n:"요 yo",r:"yo",z:"同“哟”",t:"요",cat:"jamo",sub:"基本元音 · 모음 10"},
+{c:"ㅜ",n:"우 u",r:"u",z:"同“乌”",t:"우",cat:"jamo",sub:"基本元音 · 모음 10"},
+{c:"ㅠ",n:"유 yu",r:"yu",z:"同“优”",t:"유",cat:"jamo",sub:"基本元音 · 모음 10"},
+{c:"ㅡ",n:"으 eu",r:"eu",z:"扁唇“呃”，嘴角向两侧",t:"으",cat:"jamo",sub:"基本元音 · 모음 10"},
+{c:"ㅣ",n:"이 i",r:"i",z:"同“衣”",t:"이",cat:"jamo",sub:"基本元音 · 모음 10"},
+/* ---- 한글: 复合元音 11 ---- */
+{c:"ㅐ",n:"애 ae",r:"ae",z:"似“唉”，口稍开",t:"애",cat:"jamo",sub:"复合元音 · 이중모음 11"},
+{c:"ㅒ",n:"얘 yae",r:"yae",z:"y 与 ㅐ 连读",t:"얘",cat:"jamo",sub:"复合元音 · 이중모음 11"},
+{c:"ㅔ",n:"에 e",r:"e",z:"似“诶”，口稍闭",t:"에",cat:"jamo",sub:"复合元音 · 이중모음 11"},
+{c:"ㅖ",n:"예 ye",r:"ye",z:"同“耶”",t:"예",cat:"jamo",sub:"复合元音 · 이중모음 11"},
+{c:"ㅘ",n:"와 wa",r:"wa",z:"同“哇”",t:"와",cat:"jamo",sub:"复合元音 · 이중모음 11"},
+{c:"ㅙ",n:"왜 wae",r:"wae",z:"w 与 ㅐ 连读",t:"왜",cat:"jamo",sub:"复合元音 · 이중모음 11"},
+{c:"ㅚ",n:"외 oe",r:"oe",z:"现代口语近“weh”",t:"외",cat:"jamo",sub:"复合元音 · 이중모음 11"},
+{c:"ㅝ",n:"워 wo",r:"wo",z:"w 与 ㅓ 连读",t:"워",cat:"jamo",sub:"复合元音 · 이중모음 11"},
+{c:"ㅞ",n:"웨 we",r:"we",z:"w 与 ㅔ 连读",t:"웨",cat:"jamo",sub:"复合元音 · 이중모음 11"},
+{c:"ㅟ",n:"위 wi",r:"wi",z:"同“喂”",t:"위",cat:"jamo",sub:"复合元音 · 이중모음 11"},
+{c:"ㅢ",n:"의 ui",r:"ui",z:"ㅡ 快速滑向 ㅣ",t:"의",cat:"jamo",sub:"复合元音 · 이중모음 11"},
+/* ---- 问候·常用语 30 ---- */
+{c:"안녕하세요",r:"annyeonghaseyo",z:"你好",cat:"greet"},
+{c:"안녕히 가세요",r:"annyeonghi gaseyo",z:"再见(对要离开的人)",cat:"greet"},
+{c:"안녕히 계세요",r:"annyeonghi gyeseyo",z:"再见(对留下的人)",cat:"greet"},
+{c:"감사합니다",r:"gamsahamnida",z:"谢谢(郑重)",cat:"greet"},
+{c:"고마워요",r:"gomawoyo",z:"谢谢(平常)",cat:"greet"},
+{c:"죄송합니다",r:"joesonghamnida",z:"对不起(郑重)",cat:"greet"},
+{c:"미안해요",r:"mianhaeyo",z:"对不起(平常)",cat:"greet"},
+{c:"괜찮아요",r:"gwaenchanayo",z:"没关系 / 还好",cat:"greet"},
+{c:"네",r:"ne",z:"是 / 好的",cat:"greet"},
+{c:"아니요",r:"aniyo",z:"不 / 不是",cat:"greet"},
+{c:"주세요",r:"juseyo",z:"请给我～",cat:"greet"},
+{c:"얼마예요?",r:"eolmayeyo?",z:"多少钱？",cat:"greet"},
+{c:"저기요",r:"jeogiyo",z:"打扰一下(呼唤店员)",cat:"greet"},
+{c:"잠시만요",r:"jamsimanyo",z:"请稍等 / 借过",cat:"greet"},
+{c:"알겠습니다",r:"algesseumnida",z:"明白了",cat:"greet"},
+{c:"몰라요",r:"mollayo",z:"不知道",cat:"greet"},
+{c:"맞아요",r:"majayo",z:"对 / 没错",cat:"greet"},
+{c:"처음 뵙겠습니다",r:"cheoeum boepgesseumnida",z:"初次见面",cat:"greet"},
+{c:"만나서 반갑습니다",r:"mannaseo bangapseumnida",z:"见到你很高兴",cat:"greet"},
+{c:"잘 먹겠습니다",r:"jal meokgesseumnida",z:"我开动了(饭前)",cat:"greet"},
+{c:"잘 먹었습니다",r:"jal meogeosseumnida",z:"我吃好了(饭后)",cat:"greet"},
+{c:"어서 오세요",r:"eoseo oseyo",z:"欢迎光临",cat:"greet"},
+{c:"수고하세요",r:"sugohaseyo",z:"辛苦了(告别时)",cat:"greet"},
+{c:"사랑해요",r:"saranghaeyo",z:"我爱你",cat:"greet"},
+{c:"화이팅!",r:"hwaiting!",z:"加油！",cat:"greet"},
+{c:"진짜요?",r:"jinjjayo?",z:"真的吗？",cat:"greet"},
+{c:"좋아요",r:"joayo",z:"好啊 / 喜欢",cat:"greet"},
+{c:"도와주세요",r:"dowajuseyo",z:"请帮帮我",cat:"greet"},
+{c:"한국어를 몰라요",r:"hangugeoreul mollayo",z:"我不会韩语",cat:"greet"},
+{c:"천천히 말해 주세요",r:"cheoncheonhi malhae juseyo",z:"请说慢一点",cat:"greet"},
+/* ---- 数字 25 ---- */
+{c:"영 / 공",r:"yeong / gong",z:"零(电话号码用 공)",t:"영",cat:"num",sub:"汉字数词 · 한자어 수 (日期·金额·电话)"},
+{c:"일",r:"il",z:"一",cat:"num",sub:"汉字数词 · 한자어 수 (日期·金额·电话)"},
+{c:"이",r:"i",z:"二",cat:"num",sub:"汉字数词 · 한자어 수 (日期·金额·电话)"},
+{c:"삼",r:"sam",z:"三",cat:"num",sub:"汉字数词 · 한자어 수 (日期·金额·电话)"},
+{c:"사",r:"sa",z:"四",cat:"num",sub:"汉字数词 · 한자어 수 (日期·金额·电话)"},
+{c:"오",r:"o",z:"五",cat:"num",sub:"汉字数词 · 한자어 수 (日期·金额·电话)"},
+{c:"육",r:"yuk",z:"六",cat:"num",sub:"汉字数词 · 한자어 수 (日期·金额·电话)"},
+{c:"칠",r:"chil",z:"七",cat:"num",sub:"汉字数词 · 한자어 수 (日期·金额·电话)"},
+{c:"팔",r:"pal",z:"八",cat:"num",sub:"汉字数词 · 한자어 수 (日期·金额·电话)"},
+{c:"구",r:"gu",z:"九",cat:"num",sub:"汉字数词 · 한자어 수 (日期·金额·电话)"},
+{c:"십",r:"sip",z:"十",cat:"num",sub:"汉字数词 · 한자어 수 (日期·金额·电话)"},
+{c:"백",r:"baek",z:"百",cat:"num",sub:"汉字数词 · 한자어 수 (日期·金额·电话)"},
+{c:"천",r:"cheon",z:"千",cat:"num",sub:"汉字数词 · 한자어 수 (日期·金额·电话)"},
+{c:"만",r:"man",z:"万",cat:"num",sub:"汉字数词 · 한자어 수 (日期·金额·电话)"},
+{c:"하나",r:"hana",z:"一(个)",cat:"num",sub:"固有数词 · 고유어 수 (数东西·年龄·点钟)"},
+{c:"둘",r:"dul",z:"二(个)",cat:"num",sub:"固有数词 · 고유어 수 (数东西·年龄·点钟)"},
+{c:"셋",r:"set",z:"三(个)",cat:"num",sub:"固有数词 · 고유어 수 (数东西·年龄·点钟)"},
+{c:"넷",r:"net",z:"四(个)",cat:"num",sub:"固有数词 · 고유어 수 (数东西·年龄·点钟)"},
+{c:"다섯",r:"daseot",z:"五(个)",cat:"num",sub:"固有数词 · 고유어 수 (数东西·年龄·点钟)"},
+{c:"여섯",r:"yeoseot",z:"六(个)",cat:"num",sub:"固有数词 · 고유어 수 (数东西·年龄·点钟)"},
+{c:"일곱",r:"ilgop",z:"七(个)",cat:"num",sub:"固有数词 · 고유어 수 (数东西·年龄·点钟)"},
+{c:"여덟",r:"yeodeol",z:"八(个)",cat:"num",sub:"固有数词 · 고유어 수 (数东西·年龄·点钟)"},
+{c:"아홉",r:"ahop",z:"九(个)",cat:"num",sub:"固有数词 · 고유어 수 (数东西·年龄·点钟)"},
+{c:"열",r:"yeol",z:"十(个)",cat:"num",sub:"固有数词 · 고유어 수 (数东西·年龄·点钟)"},
+{c:"몇",r:"myeot",z:"几 / 多少",cat:"num",sub:"固有数词 · 고유어 수 (数东西·年龄·点钟)"},
+/* ---- 人·家庭 24 ---- */
+{c:"저",r:"jeo",z:"我(谦称)",cat:"ppl"},
+{c:"나",r:"na",z:"我(平称)",cat:"ppl"},
+{c:"너",r:"neo",z:"你(平称)",cat:"ppl"},
+{c:"우리",r:"uri",z:"我们",cat:"ppl"},
+{c:"사람",r:"saram",z:"人",cat:"ppl"},
+{c:"친구",r:"chingu",z:"朋友",cat:"ppl"},
+{c:"가족",r:"gajok",z:"家人",cat:"ppl"},
+{c:"아버지 / 아빠",r:"abeoji / appa",z:"父亲 / 爸爸",t:"아버지",cat:"ppl"},
+{c:"어머니 / 엄마",r:"eomeoni / eomma",z:"母亲 / 妈妈",t:"어머니",cat:"ppl"},
+{c:"형",r:"hyeong",z:"哥哥(男生叫)",cat:"ppl"},
+{c:"오빠",r:"oppa",z:"哥哥(女生叫)",cat:"ppl"},
+{c:"누나",r:"nuna",z:"姐姐(男生叫)",cat:"ppl"},
+{c:"언니",r:"eonni",z:"姐姐(女生叫)",cat:"ppl"},
+{c:"동생",r:"dongsaeng",z:"弟弟 / 妹妹",cat:"ppl"},
+{c:"아들",r:"adeul",z:"儿子",cat:"ppl"},
+{c:"딸",r:"ttal",z:"女儿",cat:"ppl"},
+{c:"할아버지",r:"harabeoji",z:"爷爷 / 外公",cat:"ppl"},
+{c:"할머니",r:"halmeoni",z:"奶奶 / 外婆",cat:"ppl"},
+{c:"아이",r:"ai",z:"孩子",cat:"ppl"},
+{c:"남자",r:"namja",z:"男人",cat:"ppl"},
+{c:"여자",r:"yeoja",z:"女人",cat:"ppl"},
+{c:"선생님",r:"seonsaengnim",z:"老师 / 先生(敬称)",cat:"ppl"},
+{c:"학생",r:"haksaeng",z:"学生",cat:"ppl"},
+{c:"이름",r:"ireum",z:"名字",cat:"ppl"},
+/* ---- 时间·日期 25 ---- */
+{c:"시간",r:"sigan",z:"时间",cat:"time"},
+{c:"지금",r:"jigeum",z:"现在",cat:"time"},
+{c:"오늘",r:"oneul",z:"今天",cat:"time"},
+{c:"어제",r:"eoje",z:"昨天",cat:"time"},
+{c:"내일",r:"naeil",z:"明天",cat:"time"},
+{c:"아침",r:"achim",z:"早上 / 早饭",cat:"time"},
+{c:"점심",r:"jeomsim",z:"中午 / 午饭",cat:"time"},
+{c:"저녁",r:"jeonyeok",z:"傍晚 / 晚饭",cat:"time"},
+{c:"밤",r:"bam",z:"夜晚",cat:"time"},
+{c:"오전",r:"ojeon",z:"上午",cat:"time"},
+{c:"오후",r:"ohu",z:"下午",cat:"time"},
+{c:"년",r:"nyeon",z:"年",cat:"time"},
+{c:"월",r:"wol",z:"月",cat:"time"},
+{c:"일",r:"il",z:"日 / 号",cat:"time"},
+{c:"주",r:"ju",z:"周 / 星期",cat:"time"},
+{c:"요일",r:"yoil",z:"星期几的“星期”",cat:"time"},
+{c:"월요일",r:"woryoil",z:"星期一",cat:"time"},
+{c:"화요일",r:"hwayoil",z:"星期二",cat:"time"},
+{c:"수요일",r:"suyoil",z:"星期三",cat:"time"},
+{c:"목요일",r:"mogyoil",z:"星期四",cat:"time"},
+{c:"금요일",r:"geumyoil",z:"星期五",cat:"time"},
+{c:"토요일",r:"toyoil",z:"星期六",cat:"time"},
+{c:"일요일",r:"iryoil",z:"星期日",cat:"time"},
+{c:"시",r:"si",z:"～点(钟)",cat:"time"},
+{c:"분",r:"bun",z:"～分(钟)",cat:"time"},
+/* ---- 饮食 29 ---- */
+{c:"밥",r:"bap",z:"米饭 / 饭",cat:"food"},
+{c:"물",r:"mul",z:"水",cat:"food"},
+{c:"김치",r:"gimchi",z:"泡菜",cat:"food"},
+{c:"김밥",r:"gimbap",z:"紫菜包饭",cat:"food"},
+{c:"비빔밥",r:"bibimbap",z:"石锅拌饭",cat:"food"},
+{c:"불고기",r:"bulgogi",z:"韩式烤肉(腌牛肉)",cat:"food"},
+{c:"삼겹살",r:"samgyeopsal",z:"烤五花肉",cat:"food"},
+{c:"치킨",r:"chikin",z:"炸鸡",cat:"food"},
+{c:"라면",r:"ramyeon",z:"泡面 / 拉面",cat:"food"},
+{c:"국",r:"guk",z:"汤",cat:"food"},
+{c:"반찬",r:"banchan",z:"小菜",cat:"food"},
+{c:"고기",r:"gogi",z:"肉",cat:"food"},
+{c:"소고기",r:"sogogi",z:"牛肉",cat:"food"},
+{c:"돼지고기",r:"dwaejigogi",z:"猪肉",cat:"food"},
+{c:"닭고기",r:"dakgogi",z:"鸡肉",cat:"food"},
+{c:"생선",r:"saengseon",z:"鱼(食材)",cat:"food"},
+{c:"채소",r:"chaeso",z:"蔬菜",cat:"food"},
+{c:"과일",r:"gwail",z:"水果",cat:"food"},
+{c:"사과",r:"sagwa",z:"苹果",cat:"food"},
+{c:"빵",r:"ppang",z:"面包",cat:"food"},
+{c:"계란",r:"gyeran",z:"鸡蛋",cat:"food"},
+{c:"우유",r:"uyu",z:"牛奶",cat:"food"},
+{c:"커피",r:"keopi",z:"咖啡",cat:"food"},
+{c:"차",r:"cha",z:"茶",cat:"food"},
+{c:"주스",r:"juseu",z:"果汁",cat:"food"},
+{c:"맥주",r:"maekju",z:"啤酒",cat:"food"},
+{c:"소주",r:"soju",z:"烧酒",cat:"food"},
+{c:"설탕",r:"seoltang",z:"糖",cat:"food"},
+{c:"소금",r:"sogeum",z:"盐",cat:"food"},
+/* ---- 场所·交通 22 ---- */
+{c:"집",r:"jip",z:"家 / 房子",cat:"place"},
+{c:"학교",r:"hakgyo",z:"学校",cat:"place"},
+{c:"회사",r:"hoesa",z:"公司",cat:"place"},
+{c:"병원",r:"byeongwon",z:"医院",cat:"place"},
+{c:"약국",r:"yakguk",z:"药店",cat:"place"},
+{c:"은행",r:"eunhaeng",z:"银行",cat:"place"},
+{c:"시장",r:"sijang",z:"市场",cat:"place"},
+{c:"마트",r:"mateu",z:"超市",cat:"place"},
+{c:"편의점",r:"pyeonuijeom",z:"便利店",cat:"place"},
+{c:"식당",r:"sikdang",z:"餐厅 / 食堂",cat:"place"},
+{c:"카페",r:"kape",z:"咖啡店",cat:"place"},
+{c:"화장실",r:"hwajangsil",z:"洗手间",cat:"place"},
+{c:"공항",r:"gonghang",z:"机场",cat:"place"},
+{c:"역",r:"yeok",z:"车站(火车/地铁)",cat:"place"},
+{c:"지하철",r:"jihacheol",z:"地铁",cat:"place"},
+{c:"버스",r:"beoseu",z:"公交车",cat:"place"},
+{c:"택시",r:"taeksi",z:"出租车",cat:"place"},
+{c:"기차",r:"gicha",z:"火车",cat:"place"},
+{c:"비행기",r:"bihaenggi",z:"飞机",cat:"place"},
+{c:"자동차",r:"jadongcha",z:"汽车",cat:"place"},
+{c:"길",r:"gil",z:"路 / 街",cat:"place"},
+{c:"서울",r:"seoul",z:"首尔",cat:"place"},
+/* ---- 日常事物 23 ---- */
+{c:"것",r:"geot",z:"东西 / 的",cat:"thing"},
+{c:"이것",r:"igeot",z:"这个",cat:"thing"},
+{c:"그것",r:"geugeot",z:"那个(近处)",cat:"thing"},
+{c:"저것",r:"jeogeot",z:"那个(远处)",cat:"thing"},
+{c:"책",r:"chaek",z:"书",cat:"thing"},
+{c:"펜",r:"pen",z:"笔",cat:"thing"},
+{c:"가방",r:"gabang",z:"包 / 书包",cat:"thing"},
+{c:"돈",r:"don",z:"钱",cat:"thing"},
+{c:"휴대폰",r:"hyudaepon",z:"手机",cat:"thing"},
+{c:"컴퓨터",r:"keompyuteo",z:"电脑",cat:"thing"},
+{c:"시계",r:"sigye",z:"钟 / 手表",cat:"thing"},
+{c:"옷",r:"ot",z:"衣服",cat:"thing"},
+{c:"신발",r:"sinbal",z:"鞋",cat:"thing"},
+{c:"모자",r:"moja",z:"帽子",cat:"thing"},
+{c:"안경",r:"angyeong",z:"眼镜",cat:"thing"},
+{c:"우산",r:"usan",z:"雨伞",cat:"thing"},
+{c:"열쇠",r:"yeolsoe",z:"钥匙",cat:"thing"},
+{c:"지갑",r:"jigap",z:"钱包",cat:"thing"},
+{c:"문",r:"mun",z:"门",cat:"thing"},
+{c:"창문",r:"changmun",z:"窗户",cat:"thing"},
+{c:"의자",r:"uija",z:"椅子",cat:"thing"},
+{c:"책상",r:"chaeksang",z:"书桌",cat:"thing"},
+{c:"침대",r:"chimdae",z:"床",cat:"thing"},
+/* ---- 动词 29 ---- */
+{c:"하다",r:"hada",z:"做",cat:"verb"},
+{c:"가다",r:"gada",z:"去",cat:"verb"},
+{c:"오다",r:"oda",z:"来",cat:"verb"},
+{c:"먹다",r:"meokda",z:"吃",cat:"verb"},
+{c:"마시다",r:"masida",z:"喝",cat:"verb"},
+{c:"보다",r:"boda",z:"看",cat:"verb"},
+{c:"듣다",r:"deutda",z:"听",cat:"verb"},
+{c:"말하다",r:"malhada",z:"说",cat:"verb"},
+{c:"읽다",r:"ikda",z:"读",cat:"verb"},
+{c:"쓰다",r:"sseuda",z:"写 / 使用",cat:"verb"},
+{c:"사다",r:"sada",z:"买",cat:"verb"},
+{c:"팔다",r:"palda",z:"卖",cat:"verb"},
+{c:"주다",r:"juda",z:"给",cat:"verb"},
+{c:"받다",r:"batda",z:"收到 / 接",cat:"verb"},
+{c:"만나다",r:"mannada",z:"见面",cat:"verb"},
+{c:"자다",r:"jada",z:"睡觉",cat:"verb"},
+{c:"일어나다",r:"ireonada",z:"起床 / 起来",cat:"verb"},
+{c:"앉다",r:"anda",z:"坐",cat:"verb"},
+{c:"서다",r:"seoda",z:"站",cat:"verb"},
+{c:"살다",r:"salda",z:"住 / 生活",cat:"verb"},
+{c:"알다",r:"alda",z:"知道",cat:"verb"},
+{c:"모르다",r:"moreuda",z:"不知道",cat:"verb"},
+{c:"좋아하다",r:"joahada",z:"喜欢",cat:"verb"},
+{c:"사랑하다",r:"saranghada",z:"爱",cat:"verb"},
+{c:"공부하다",r:"gongbuhada",z:"学习",cat:"verb"},
+{c:"일하다",r:"ilhada",z:"工作",cat:"verb"},
+{c:"배우다",r:"baeuda",z:"学 / 学会",cat:"verb"},
+{c:"있다",r:"itda",z:"有 / 在",cat:"verb"},
+{c:"없다",r:"eopda",z:"没有 / 不在",cat:"verb"},
+/* ---- 形容词 26 ---- */
+{c:"좋다",r:"jota",z:"好",cat:"adj"},
+{c:"나쁘다",r:"nappeuda",z:"坏 / 差",cat:"adj"},
+{c:"크다",r:"keuda",z:"大",cat:"adj"},
+{c:"작다",r:"jakda",z:"小",cat:"adj"},
+{c:"많다",r:"manta",z:"多",cat:"adj"},
+{c:"적다",r:"jeokda",z:"少",cat:"adj"},
+{c:"길다",r:"gilda",z:"长",cat:"adj"},
+{c:"짧다",r:"jjalda",z:"短",cat:"adj"},
+{c:"높다",r:"nopda",z:"高",cat:"adj"},
+{c:"낮다",r:"natda",z:"低",cat:"adj"},
+{c:"빠르다",r:"ppareuda",z:"快",cat:"adj"},
+{c:"느리다",r:"neurida",z:"慢",cat:"adj"},
+{c:"덥다",r:"deopda",z:"热(天气)",cat:"adj"},
+{c:"춥다",r:"chupda",z:"冷(天气)",cat:"adj"},
+{c:"뜨겁다",r:"tteugeopda",z:"烫 / 滚烫",cat:"adj"},
+{c:"차갑다",r:"chagapda",z:"凉 / 冰凉",cat:"adj"},
+{c:"맛있다",r:"masitda",z:"好吃",cat:"adj"},
+{c:"맛없다",r:"madeopda",z:"不好吃",cat:"adj"},
+{c:"예쁘다",r:"yeppeuda",z:"漂亮",cat:"adj"},
+{c:"멋있다",r:"meositda",z:"帅气 / 有型",cat:"adj"},
+{c:"비싸다",r:"bissada",z:"贵",cat:"adj"},
+{c:"싸다",r:"ssada",z:"便宜",cat:"adj"},
+{c:"쉽다",r:"swipda",z:"容易",cat:"adj"},
+{c:"어렵다",r:"eoryeopda",z:"难",cat:"adj"},
+{c:"재미있다",r:"jaemiitda",z:"有趣",cat:"adj"},
+{c:"바쁘다",r:"bappeuda",z:"忙",cat:"adj"}
+];
+/*DATA-END*/
+
+/* ================= STATE ================= */
+let activeCat="all", query="", theme="light", showRR=true;
+let deck=[], deckIdx=0, flipped=false;
+
+/* ================= TTS ================= */
+let koVoice=null;
+function pickVoice(){
+  const vs=window.speechSynthesis?window.speechSynthesis.getVoices():[];
+  koVoice=vs.find(v=>/^ko/i.test(v.lang))||null;
+}
+if(window.speechSynthesis){
+  pickVoice();
+  window.speechSynthesis.onvoiceschanged=pickVoice;
+}
+function speak(text,btn){
+  if(!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang="ko-KR"; u.rate=0.85;
+  if(koVoice) u.voice=koVoice;
+  if(btn){
+    btn.classList.add("playing");
+    u.onend=u.onerror=()=>btn.classList.remove("playing");
+  }
+  window.speechSynthesis.speak(u);
+}
+
+/* ================= HELPERS ================= */
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
+function ttsText(it){return it.t||it.c}
+function matches(it,q){
+  if(!q) return true;
+  const hay=(it.c+" "+(it.n||"")+" "+it.r+" "+it.z).toLowerCase();
+  return hay.includes(q);
+}
+const SPK='<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>';
+
+/* ================= RENDER ================= */
+const pillsEl=document.getElementById("pills");
+const secEl=document.getElementById("sections");
+const emptyEl=document.getElementById("empty");
+
+function renderPills(){
+  pillsEl.innerHTML=CATS.map(c=>{
+    const n=c.k==="all"?DATA.length:DATA.filter(d=>d.cat===c.k).length;
+    return `<button class="pill${c.k===activeCat?" active":""}" data-cat="${c.k}">${c.ko?`<span class="ko">${c.ko}</span> `:""}${c.zh}<span class="n">${n}</span></button>`;
+  }).join("");
+}
+pillsEl.addEventListener("click",e=>{
+  const p=e.target.closest(".pill"); if(!p) return;
+  activeCat=p.dataset.cat; renderPills(); renderSections();
+});
+
+function cardHTML(it,idx){
+  if(it.cat==="jamo"){
+    return `<div class="card jamo-card">
+      <div class="w ko">${esc(it.c)}</div>
+      <div class="jname ko">${esc(it.n)}</div>
+      <div class="rr">${esc(it.r)}</div>
+      <div class="zh">${esc(it.z)}</div>
+      <button class="speak" data-i="${idx}" aria-label="播放发音">${SPK}</button>
+    </div>`;
+  }
+  return `<div class="card">
+    <button class="speak" data-i="${idx}" aria-label="播放发音">${SPK}</button>
+    <div class="w ko">${esc(it.c)}</div>
+    <div class="rr">${esc(it.r)}</div>
+    <div class="zh">${esc(it.z)}</div>
+  </div>`;
+}
+
+function renderSections(){
+  const q=query.trim().toLowerCase();
+  const cats=activeCat==="all"?CATS.slice(1):CATS.filter(c=>c.k===activeCat);
+  let html="",total=0;
+  for(const c of cats){
+    const items=DATA.map((d,i)=>({d,i})).filter(x=>x.d.cat===c.k&&matches(x.d,q));
+    if(!items.length) continue;
+    total+=items.length;
+    html+=`<section class="section"><div class="sec-head">
+      <h2><span class="ko">${c.ko}</span>${c.zh}</h2>
+      <span class="desc">${c.desc}</span>
+      <span class="count">${items.length} 项</span></div>`;
+    const hasSub=items.some(x=>x.d.sub);
+    if(hasSub){
+      let cur=null,open=false;
+      for(const x of items){
+        const s=x.d.sub||"其他";
+        if(s!==cur){
+          if(open) html+="</div>";
+          html+=`<div class="sub-head">${esc(s)}</div><div class="grid${c.k==="jamo"?" jamo":""}">`;
+          cur=s; open=true;
+        }
+        html+=cardHTML(x.d,x.i);
+      }
+      if(open) html+="</div>";
+    }else{
+      html+=`<div class="grid">${items.map(x=>cardHTML(x.d,x.i)).join("")}</div>`;
+    }
+    html+="</section>";
+  }
+  secEl.innerHTML=html;
+  emptyEl.style.display=total?"none":"block";
+}
+secEl.addEventListener("click",e=>{
+  const b=e.target.closest(".speak"); if(!b) return;
+  speak(ttsText(DATA[+b.dataset.i]),b);
+});
+
+/* ================= toolbar events ================= */
+document.getElementById("q").addEventListener("input",e=>{query=e.target.value;renderSections()});
+document.getElementById("rrBtn").addEventListener("click",e=>{
+  showRR=!showRR;
+  document.body.classList.toggle("hide-rr",!showRR);
+  e.currentTarget.classList.toggle("active-toggle",showRR);
+});
+document.getElementById("themeBtn").addEventListener("click",e=>{
+  theme=theme==="light"?"dark":"light";
+  document.documentElement.dataset.theme=theme;
+  e.currentTarget.textContent=theme==="light"?"深色":"浅色";
+});
+
+/* ================= practice mode ================= */
+const overlay=document.getElementById("overlay");
+const flash=document.getElementById("flash");
+const faceF=document.getElementById("faceFront");
+const faceB=document.getElementById("faceBack");
+const ovCount=document.getElementById("ovCount");
+const ovCat=document.getElementById("ovCat");
+
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+function openPractice(){
+  const q=query.trim().toLowerCase();
+  deck=DATA.filter(d=>(activeCat==="all"||d.cat===activeCat)&&matches(d,q));
+  if(!deck.length) deck=DATA.slice();
+  shuffle(deck); deckIdx=0; flipped=false;
+  const cn=CATS.find(c=>c.k===activeCat);
+  ovCat.textContent=`卡片练习 · ${cn?cn.zh:"全部"} · 已打乱`;
+  overlay.classList.add("open");
+  document.body.style.overflow="hidden";
+  renderFlash(); flash.focus();
+}
+function closePractice(){
+  overlay.classList.remove("open");
+  document.body.style.overflow="";
+  if(window.speechSynthesis) window.speechSynthesis.cancel();
+}
+function renderFlash(){
+  const it=deck[deckIdx];
+  flash.classList.toggle("flipped",flipped);
+  if(it.cat==="jamo"){
+    faceF.innerHTML=`<div class="big ko">${esc(it.c)}</div><div class="hint">空格翻转 · 想想它怎么读？</div>`;
+    faceB.innerHTML=`<div class="mid ko">${esc(it.n)}</div><div class="rr">${esc(it.r)}</div><div class="jn">${esc(it.z)}</div><div class="hint">S 键发音</div>`;
+  }else{
+    faceF.innerHTML=`<div class="big ko">${esc(it.c)}</div><div class="hint">空格翻转 · 想想中文意思？</div>`;
+    faceB.innerHTML=`<div class="mid">${esc(it.z)}</div><div class="rr">${esc(it.r)}</div><div class="hint">S 键发音</div>`;
+  }
+  ovCount.textContent=`${deckIdx+1} / ${deck.length}`;
+}
+function nav(step){
+  deckIdx=(deckIdx+step+deck.length)%deck.length;
+  flipped=false; renderFlash();
+}
+document.getElementById("cardBtn").addEventListener("click",openPractice);
+document.getElementById("ovClose").addEventListener("click",closePractice);
+document.getElementById("prevBtn").addEventListener("click",()=>nav(-1));
+document.getElementById("nextBtn").addEventListener("click",()=>nav(1));
+document.getElementById("shufBtn").addEventListener("click",()=>{shuffle(deck);deckIdx=0;flipped=false;renderFlash()});
+flash.addEventListener("click",()=>{flipped=!flipped;renderFlash()});
+document.addEventListener("keydown",e=>{
+  if(!overlay.classList.contains("open")) return;
+  if(e.key==="Escape") closePractice();
+  else if(e.key==="ArrowRight") nav(1);
+  else if(e.key==="ArrowLeft") nav(-1);
+  else if(e.key===" "){e.preventDefault();flipped=!flipped;renderFlash()}
+  else if(e.key==="s"||e.key==="S") speak(ttsText(deck[deckIdx]));
+});
+
+/* ================= init ================= */
+renderPills();
+renderSections();
+</script>
+</body>
+</html>
